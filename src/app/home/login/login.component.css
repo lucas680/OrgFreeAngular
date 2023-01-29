@@ -1,0 +1,27 @@
+.login{
+  width: 30vw;
+}
+@media (max-width: 767px) and (min-width: 575px){
+  .login{
+    width: 60vw;
+  }
+}
+
+@media(max-width: 574px){
+  .login{
+    width: 90vw;
+  }
+}
+
+.login h4{
+  font-size: 180%;
+}
+
+.login input{
+  margin: 5% 0;
+}
+
+.login button{
+  margin-bottom: 3%;
+}
+

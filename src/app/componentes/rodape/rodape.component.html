@@ -1,0 +1,9 @@
+<footer *ngIf="user$ | async as user" class="bg-success py-2" style="z-index: 0;">
+  <ul *ngIf="!user.name" class="nav justify-content-center border-bottom pb-3">
+    <li class="nav-item"><a [routerLink]="['home']" class="nav-link px-2 text-white">Início</a></li>
+    <li class="nav-item"><a [routerLink]="['products']" class="nav-link px-2 text-white">Produtos</a></li>
+    <li class="nav-item"><a [routerLink]="['about']" class="nav-link px-2 text-white">Sobre</a></li>
+    <li class="nav-item"><a [routerLink]="['']" class="nav-link px-2 text-white">Login</a></li>
+  </ul>
+  <p class="text-center text-white mt-3">&copy; 2022 Desenvolvido com carinho por <a class="text-white" target="_blank" href="https://github.com/lucas680">Lucas Pereira</a></p>
+</footer>

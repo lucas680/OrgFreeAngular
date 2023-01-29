@@ -1,0 +1,38 @@
+<div class="bg-success p-4 rounded container" *ngIf="animal$ | async as animal">
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <app-animal
+        [url]="animal.url"
+        [descricao]="animal.description"
+      ></app-animal>
+    </div>
+    <div class="col-lg-5">
+      <small>
+        <div *ngIf="animal.description; else semDescription">
+          <p class="break-word text-light">Descrição: {{ animal.description }}</p>
+        </div>
+        <ng-template #semDescription>
+          <p class="text-light mb-5" >Nenhuma descrição</p>
+        </ng-template>
+        <i (click)="curtir()" class="fa fa-heart-o fa-2x mr-2 pull-left text-light">{{
+          animal.likes
+        }}</i>
+        <i class="fa fa-comment-o fa-2x mr-2 ml-2 text-light">{{ animal.comments }}</i>
+        <i (click)="excluir()" class="fa fa-trash-o fa-2x pull-right text-light"></i>
+      </small>
+
+      <app-comentarios
+        [id]="animalId"
+        *ngIf="animal.allowComments; else warning"
+      ></app-comentarios>
+
+      <ng-template #warning>
+        <p class="mt-5 text-light">Nenhum usuário pode comentar no produto</p>
+      </ng-template>
+    </div>
+    <div class="col-10">
+      <app-comentariosExibir [id]="animalId">
+      </app-comentariosExibir>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<header class="sticky-top">
+  <nav id="menu" onscroll="scroll()" class="navbar navbar-dark bg-success px-2">
+    <div *ngIf="user$ | async as user" >
+      <div *ngIf="user.name; else menu2">
+        <a class="navbar-brand">
+          <i class="fa fa-bars menu-responsivo" (click)="menu.abreMenu()" (keyup.space)="menu.abreMenu()"></i>
+          <i class="fa fa-envira menu-icon"></i>
+          OrgFree</a>
+
+        <app-menu #menu>
+          <ul class="list-unstyled">
+            <li class="mt-3">
+              <i class="fa fa-home text-light me-2"></i>
+              <a class="link-light link_login" (click)="menu.abreMenu()" [routerLink]="['produtos']">Início</a>
+            </li>
+            <li class="mt-2">
+              <i class="fa fa-shopping-basket text-light me-2"></i>
+              <a class="link-light link_login" (click)="menu.abreMenu()" [routerLink]="['products']">Loja</a>
+            </li>
+            <li class="mt-2">
+              <i class="fa fa-plus-circle text-light me-2"></i>
+              <a class="link-light link_login" (click)="menu.abreMenu()" [routerLink]="['produtos','novo']">Adicionar produto</a>
+            </li>
+            <li class="mt-2">
+              <i class="fa fa-building text-light me-2"></i>
+              <a class="link-light link_login" (click)="menu.abreMenu()" [routerLink]="['about']">Sobre nós</a>
+            </li>
+          </ul>
+        </app-menu>
+      </div>
+    </div>
+    <ng-template #menu2>
+      <a class="navbar-brand">
+        <i class="fa fa-envira menu-icon"></i>
+        OrgFree</a>
+    </ng-template>
+
+    <div *ngIf="user$ | async as user" class="me-3">
+
+      <span *ngIf="user.name; else login" class="logado">
+        <i class="fa fa-user-circle mr-1" ></i>
+        <a class="mr-1">{{user.name}}</a>
+        <a (click)="logout()">SAIR</a>
+      </span>
+    </div>
+
+  </nav>
+
+  <ng-template #login >
+    <span class="navbar-text me-5">
+      <a [routerLink]="['products']" class="link_login">
+        PRODUTOS
+      </a>
+    </span>
+
+    <span class="navbar-text">
+      <a [routerLink]="['']" class="link_login">
+        ENTRAR
+      </a>
+    </span>
+  </ng-template>
+</header>

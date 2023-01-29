@@ -1,0 +1,16 @@
+.about{
+  min-height: 60vh;
+  text-align: center;
+}
+.about h2{
+  font-weight: 800;
+  font-size: 35px;
+}
+.about h3{
+  font-weight: 600;
+  font-size: 25px;
+}
+.texto{
+  font-size: 20px;
+  padding: 5% 15%;
+}

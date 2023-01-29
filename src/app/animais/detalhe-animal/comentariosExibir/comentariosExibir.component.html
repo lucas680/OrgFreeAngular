@@ -1,0 +1,13 @@
+<div *ngIf="comentarios$ | async as comentarios" class="mt-2 text-light">
+
+  <h4 class="mt-4">Comentários:</h4>
+  <ul class="list-unstyled comentario-list" *ngIf="comentarios[0]; else mensagem">
+    <li *ngFor="let comentario of comentarios" class=" mt-2 bg-light text-dark p-2 rounded">
+      <p class="font-weight-bold mt-2 text-capitalize"><i class="fa fa-user-circle"></i> {{ comentario.userName }} - {{ comentario.date  | date: "dd/MM/yyy HH:mm"}}</p>
+      <p class="break-word mb-2">{{ comentario.text }}</p>
+    </li>
+  </ul>
+  <ng-template #mensagem>
+    <p class="text-light">Nenhum comentário ainda</p>
+  </ng-template>
+</div>

@@ -1,0 +1,72 @@
+<div class="container bg-success p-5 w-90">
+  <form [formGroup]="formularioAnimal" class="row" (submit)="upload()">
+    <h2 class="text-light text-center mb-5">Adicionar produto</h2>
+    <div class="col-md-6 text-center">
+      <div class="form-group">
+        <button
+          type="button"
+          (click)="fileInput.click()"
+          class="btn"
+        >
+          <i *ngIf="!preview; else previewImg" class="bg-light p-2 rounded fa fa-image fa-4x align-middle"></i>
+          <ng-template  #previewImg>
+            <img [src]="preview" class="img-thumbnail img-produto" title="Preview">
+          </ng-template>
+        </button>
+        <input
+          #fileInput
+          type="file"
+          hidden
+          formControlName="file"
+          accept="image/*"
+          (change)="gravaArquivo($event.target)"
+        />
+        <app-mensagem
+          mensagem="Por favor selecione a foto"
+          *ngIf="!!formularioAnimal.get('file')?.errors?.['required']"
+        ></app-mensagem>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group mt-4">
+        <textarea
+          formControlName="description"
+          class="form-control form-control-sm"
+          placeholder="Descrição do produto"
+          rows="2" cols="12"
+        ></textarea>
+        <app-mensagem
+          mensagem="Tamanho máximo do campo é 300 caracteres"
+          *ngIf="!!formularioAnimal.get('description')?.errors?.['maxlength']"
+        ></app-mensagem>
+      </div>
+
+      <div class="form-group mb-4">
+        <label class="text-light">
+          Permitir comentário
+          <input type="checkbox" formControlName="allowComments" />
+        </label>
+      </div>
+
+      <div *ngIf="!percentualConcluido; else uploaddiv">
+        <button
+          [disabled]="formularioAnimal.invalid"
+          type="submit"
+          class="btn btn-light btn-block me-2"
+        >
+          Enviar
+        </button>
+
+        <a routerLink="['animais']" class="btn btn-secondary btn-block"
+          >Cancelar</a
+        >
+      </div>
+
+      <ng-template #uploaddiv>
+        <div class="text-center display-4 text-light">
+          Percentual de upload {{ percentualConcluido }} %
+        </div>
+      </ng-template>
+    </div>
+  </form>
+</div>

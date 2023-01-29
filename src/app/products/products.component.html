@@ -1,0 +1,21 @@
+<div class="about bg-success p-2 rounded">
+  <h2 class="text-center mt-5 mb-5 text-white">Todos os produtos</h2>
+  <div class="text-white" *ngIf="produtos$; else naoha">
+    <div *ngIf="produtos$ | async as fotos" class="row container me-auto ms-auto">
+      <div *ngFor="let foto of fotos" class="col-3 mb-3">
+        <a [routerLink]="['/produtos', foto.id]">
+
+          <app-cartao>
+            <app-animal [url]="foto.url" [descricao]="foto.description"></app-animal>
+            <i aria-hidden="true" class="fa fa-heart-o fa-1x mr-2">{{foto.likes}}</i>
+            <i aria-hidden="true" class="fa fa-comment-o fa-1x mr-2 ml-2">{{foto.comments}}</i>
+          </app-cartao>
+
+        </a>
+      </div>
+    </div>
+  </div>
+  <ng-template #naoha>
+    <p class="text-light">Ainda não há produtos na loja</p>
+  </ng-template>
+</div>

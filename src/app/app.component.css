@@ -1,0 +1,9 @@
+.conteudo{
+  min-height: 90vh;
+  background-image: url("../assets/img/feira.jpg");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  padding: 5% 0;
+}
